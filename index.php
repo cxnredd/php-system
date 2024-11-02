@@ -23,19 +23,16 @@
                 $result = mysqli_query($con,"SELECT * FROM student_user WHERE Username='$username' AND Password='$password' ") or die("Select Error");
                 $row = mysqli_fetch_assoc($result);
 
-                {
+                if($row) { // Check if a row was returned
+                    $_SESSION['valid'] = true; 
+                    header("Location: dashboard.php"); 
+                    exit(); // Ensure no further code is executed
+                } else {
                     echo "<div class='message'>
                       <p>Wrong Username or Password</p>
                        </div> <br>";
-         
                 }
-                if(isset($_SESSION['valid'])){
-                    header("Location: dashboard.php");
-                }
-              }else{
-
-                
-            
+              }
             ?>
             <header align="center">Bestlink College of the Philippines</header>
             <form action="" method="post">
@@ -50,15 +47,13 @@
                 </div>
 
                 <div class="field">
-                    
                     <input type="submit" class="btn" name="submit" value="Login" required>
                 </div>
                 <div class="links">
-                    Don't have account? <a href="register.php">Sign Up</a>
+                    Don't have an account? <a href="register.php">Sign Up</a>
                 </div>
             </form>
         </div>
-        <?php } ?>
       </div>
 </body>
 </html>
