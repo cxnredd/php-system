@@ -43,6 +43,6 @@
 
 				<script>
 					document.getElementById("submit-report").addEventListener("click", function() {
-					  window.location.href = "dashboard.html";
+					  window.location.href = "dashboard.php";
 					});
 				  </script>
