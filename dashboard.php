@@ -25,8 +25,8 @@
         
         <div class="avatar-container text-center">
             <img src="public/assets/images/avatar.jfif" alt="Avatar" class="avatar">
-            <p class="username text-white">Boy Bawang</p>
-            <p class="email text-white">admin@gmail.com</p>
+            <p class="username text-white">Juan Delacruz</p>
+            <p class="email text-white">juandelacruz@gmail.com</p>
         </div>
         
         <div class="container mt-5">
