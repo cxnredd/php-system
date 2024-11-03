@@ -42,6 +42,7 @@
                     <a class="dropdown-a" href="#" style="text-decoration: none;"><span>Student Personal Information</span></a>
                     <a class="dropdown-a" href="#" style="text-decoration: none;"><span>Student Personal Information</span></a>
                     <a class="dropdown-a" href="#" style="text-decoration: none;"><span>Student Personal Information</span></a>
+
                 </div>
             </div>
     
@@ -88,14 +89,14 @@
             <section class="tiles-container">
                 <div class="tile">
                     
-                  <a href="academic.php">
+                  <a href="crud/display.php">
                     <h2>Academic Violation Report</h2>
                   </a>
                 </div>
         
                 <section class="tiles-container">
                     <div class="tile">
-                      <a href="discipline.php">
+                      <a href="crud/display.php">
                         <h2>Discipline Violation Report</h2>
                       </a>
                     </div>
