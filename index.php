@@ -49,9 +49,6 @@
                 <div class="field">
                     <input type="submit" class="btn" name="submit" value="Login" required>
                 </div>
-                <div class="links">
-                    Don't have an account? <a href="register.php">Sign Up</a>
-                </div>
             </form>
         </div>
       </div>
