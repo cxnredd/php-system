@@ -5,42 +5,188 @@
    
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <title>Sms4</title>
+    <link rel="stylesheet" href="public/css/dstyle.css">
+    <link rel="stylesheet" href="public/css/style4.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.0.5/css/boxicons.min.css">
+</head>
+<body>
 
-<div class="container">
-    <link rel="stylesheet" href="public/css/acad.css">
-	<div class="modal">
-		<div class="modal__header">
-			<span class="modal__title">Academic Violation Report</span><button class="button button--icon"><svg width="24" viewBox="0 0 24 24" height="24" xmlns="http://www.w3.org/2000/svg">
-					<path fill="none" d="M0 0h24v24H0V0z"></path>
-					<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg></button>
-		</div>
-		<div class="modal__body">
-			<div class="input">
-			  <label class="input__label">Name</label>
-			  <input class="input__field" type="text"> 
-			</div>
-			<div class="input">
-			  <label class="input__label">Violation Type:</label>
-			  <select class="input__field" id="violation-type">
-				<option value="">Select a violation type</option>
-				<option value="academic">Academic Misconduct</option>
-				<option value="Cheating">Cheating</option>
-				<option value="Plagiarism">Plagiarism</option>
-				<option value="Collusion">Collusion</option>
-				<option value="Unauthorized">Unauthorized Access</option>
-			  </select>
-			</div>
-			<div class="input">
-			  <label class="input__label">Description</label>
-			  <textarea class="input__field input__field--textarea" id="violation-description"></textarea>
-			</div>
-		  </div>
-		  <div class="modal__footer">
-			<button class="button button--primary" id="submit-report">Report</button>
-		  </div>
+    <div class="sidenav" id="sidenav">
+        <h4 class="text-center" style="color: white; font-size: 20px;">Prefect Department</h4><br><br>
+        
+        <div class="avatar-container text-center">
+            <img src="public/assets/images/avatar.jfif" alt="Avatar" class="avatar">
+            <p class="username text-white">Juan Delacruz</p>
+            <p class="email text-white">juandelacruz@gmail.com</p>
+        </div>
+        
+        <div class="container mt-5">
+            <div class="dropdownSmsprofile">
+                <button class="dropdown-btn" onclick="toggleDropdown(this)">
+                <i class='bx bx-grid-alt'></i> Prefect of Discipline <i class="fa fa-caret-down" style="float: right;"></i>
+                </button>
+                <div class="dropdown-container">
+                    <a class="dropdown-a" href="studentdb.php" style="text-decoration: none;"><span>Dashboard</span></a>
+                    <a class="dropdown-a" href="academic.php" style="text-decoration: none;"><span>Academic Violation Report</span></a>
+                    <a class="dropdown-a" href="discipline.php" style="text-decoration: none;"><span>Discipline Violation Report</span></a>
+                </div>
+            </div>
+        
+            <div class="dropdownSmsprofile">
+                <button class="dropdown-btn" onclick="toggleDropdown(this)">
+                    <i class='bx bx-user'></i> Student Information <i class="fa fa-caret-down" style="float: right;"></i>
+                </button>
+                <div class="dropdown-container">
+                    <a class="dropdown-a" href="#" style="text-decoration: none;"><span>Student Personal Information</span></a>
+                    <a class="dropdown-a" href="#" style="text-decoration: none;"><span>Student Personal Information</span></a>
+                    <a class="dropdown-a" href="#" style="text-decoration: none;"><span>Student Personal Information</span></a>
+                </div>
+            </div>
+    
+            <div class="dropdownSmsprofile">
+                <button class="dropdown-btn" onclick="toggleDropdown(this)">
+                    <i class='bx bx-money'></i> Document <i class="fa fa-caret-down" style="float: right;"></i>
+                </button>
+                <div class="dropdown-container">
+                    <a class="dropdown-a" href="#" style="text-decoration: none;"><span>Document Request</span></a>
+                    <a class="dropdown-a" href="#" style="text-decoration: none;"><span>Document Request</span></a>
+                    <a class="dropdown-a" href="#" style="text-decoration: none;"><span>Document Request</span></a>
+                </div>
+            </div>
+    
+            <div class="dropdownSmsprofile">
+                <button class="dropdown-btn" onclick="toggleDropdown(this)">
+                    <i class='bx bx-file'></i> Curriculum <i class="fa fa-caret-down" style="float: right;"></i>
+                </button>
+                <div class="dropdown-container">
+                    <a class="dropdown-a" href="#" style="text-decoration: none;"><span>Courses</span></a>
+                </div>
+            </div>
+    
+            
+    
+            <div class="dropdownSmsprofile">
+                <a class="dropdown-a" href="logout.php" style="text-decoration: none;"><i class='bx bx-log-out'></i> <span>Log Out</span></a>  
+            </div>
+        </div>
+    </div>
+    
+    
+<div class="main" id="mainContent">
+    <button class="btn" id="toggleButton">&nbsp; ☰ &nbsp;</button>
+    <hr>
+    <h2 class="text-left" style="font-size: 22px;">Academic Dashboard</h2><br>
+    
+    <div class="main" id="mainContentOuter">
 
-		  <script>
-			document.getElementById("submit-report").addEventListener("click", function() {
-			  window.location.href = "dashboard.php";
-			});
-		  </script>
+	<aside>
+        <label for="violation-type">Select Violation Type:</label>
+        <select id="violation-type" onchange="filterReports()">
+            <option value="all">All Violations</option>
+            <option value="Academic Violation">Academic Violation</option>
+            <option value="Discipline Violation">Discipline Violation</option>
+        </select>
+    </aside>
+
+    <main class="main-panel">
+        <div class="panel-header">
+            <h2>Submitted Reports</h2>
+            <input type="text" id="search" placeholder="🔍 Search reports..." onkeyup="searchReports()">
+        </div>
+
+        <div class="reports-list" id="reports-list">
+            <div class="report unread" data-type="Discipline Violation" onclick="openReportDetails(this)">
+                <span class="status unread">🟢 Unread</span>
+                <span class="name">John Doe</span>
+                <span class="violation">Bullying</span>
+                <span class="date">Feb 21, 2025</span>
+            </div>
+            <div class="report unread" data-type="Academic Violation" onclick="openReportDetails(this)">
+                <span class="status unread">🟢 Unread</span>
+                <span class="name">Jane Doe</span>
+                <span class="violation">Cheating</span>
+                <span class="date">Feb 21, 2025</span>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function openReportDetails(element) {
+            const name = element.querySelector('.name').textContent;
+            const violation = element.querySelector('.violation').textContent;
+            const date = element.querySelector('.date').textContent;
+            const status = element.querySelector('.status').textContent;
+            const type = element.getAttribute('data-type');
+
+            window.location.href = `report-details.html?name=${encodeURIComponent(name)}&violation=${encodeURIComponent(violation)}&date=${encodeURIComponent(date)}&status=${encodeURIComponent(status)}&type=${encodeURIComponent(type)}`;
+        }
+
+        function filterReports() {
+            const selectedType = document.getElementById('violation-type').value;
+            const reports = document.querySelectorAll('.report');
+            
+            reports.forEach(report => {
+                if (selectedType === 'all' || report.getAttribute('data-type') === selectedType) {
+                    report.style.display = 'block';
+                } else {
+                    report.style.display = 'none';
+                }
+            });
+        }
+		</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+
+const toggleButton = document.getElementById('toggleButton');
+const sidenav = document.getElementById('sidenav');
+const mainContent = document.getElementById('mainContent');
+const toggleButtonOuter = document.getElementById('toggleButtonOuter');
+const mainContentOuter = document.getElementById('mainContentOuter');
+
+// Attach event listener to the toggle button
+toggleButton.addEventListener('click', () => {
+  sidenav.classList.toggle('hidden');
+  mainContent.classList.toggle('shift');
+});
+
+// Attach event listener to the outer toggle button
+toggleButtonOuter.addEventListener('click', () => {
+  sidenav.classList.toggle('hidden');
+  mainContentOuter.classList.toggle('shift');
+});
+
+// Dropdown
+function toggleDropdown(button) {
+  button.classList.toggle("active");
+  var dropdownContent = button.nextElementSibling;
+  dropdownContent.style.display = (dropdownContent.style.display === "block") ? "none" : "block";
+}
+
+window.onclick = function(event){
+  if (!event.target.matches('.dropdown-btn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-container");
+    for (var i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.style.display === "block"){
+        openDropdown.style.display = "none";
+      }
+    }
+  }
+};
+
+</script>
+</body>
+</html>

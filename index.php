@@ -23,11 +23,21 @@
                 $result = mysqli_query($con,"SELECT * FROM student_user WHERE Username='$username' AND Password='$password' ") or die("Select Error");
                 $row = mysqli_fetch_assoc($result);
 
-                if($row) { // Check if a row was returned
-                    $_SESSION['valid'] = true; 
-                    header("Location: dashboard.php"); 
-                    exit(); // Ensure no further code is executed
-                } else {
+                if($row["usertype"]=="user")
+            {
+                    $_SESSION["username"]=$username;
+
+                    header("location:dashboard.php");
+            }
+
+                elseif($row["usertype"]=="admin")
+                {
+                    $_SESSION["username"]=$username;
+
+                    header("location:admindb.php");
+                }
+                else
+                {
                     echo "<div class='message'>
                       <p>Wrong Username or Password</p>
                        </div> <br>";

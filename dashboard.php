@@ -31,7 +31,14 @@
         
         <div class="container mt-5">
             <div class="dropdownSmsprofile">
-                <a class="dropdown-a" href="#" style="text-decoration: none;"><i class='bx bx-grid-alt'></i> Student's Dashboard</a>  
+                <button class="dropdown-btn" onclick="toggleDropdown(this)">
+                <i class='bx bx-grid-alt'></i> Prefect of Discipline <i class="fa fa-caret-down" style="float: right;"></i>
+                </button>
+                <div class="dropdown-container">
+                    <a class="dropdown-a" href="studentdb.php" style="text-decoration: none;"><span>Dashboard</span></a>
+                    <a class="dropdown-a" href="academic.php" style="text-decoration: none;"><span>Academic Violation Report</span></a>
+                    <a class="dropdown-a" href="discipline.php" style="text-decoration: none;"><span>Discipline Violation Report</span></a>
+                </div>
             </div>
         
             <div class="dropdownSmsprofile">
@@ -42,7 +49,6 @@
                     <a class="dropdown-a" href="#" style="text-decoration: none;"><span>Student Personal Information</span></a>
                     <a class="dropdown-a" href="#" style="text-decoration: none;"><span>Student Personal Information</span></a>
                     <a class="dropdown-a" href="#" style="text-decoration: none;"><span>Student Personal Information</span></a>
-
                 </div>
             </div>
     
@@ -78,31 +84,10 @@
 <div class="main" id="mainContent">
     <button class="btn" id="toggleButton">&nbsp; ☰ &nbsp;</button>
     <hr>
-    <h2 class="text-left" style="font-size: 22px;">Student's Dashboard</h2><br>
+    <h2 class="text-left" style="font-size: 22px;">Dashboard</h2><br>
     
     <div class="main" id="mainContentOuter">
         
-        
-            
-            
-        <main>
-            <section class="tiles-container">
-                <div class="tile">
-                    
-                  <a href="crud/display.php">
-                    <h2>Academic Violation Report</h2>
-                  </a>
-                </div>
-        
-                <section class="tiles-container">
-                    <div class="tile">
-                      <a href="crud/display.php">
-                        <h2>Discipline Violation Report</h2>
-                      </a>
-                    </div>
-                  </section>
-                    </div>
-                </main>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
@@ -146,7 +131,6 @@ window.onclick = function(event){
     }
   }
 };
-
 
 </script>
 </body>

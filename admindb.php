@@ -14,9 +14,11 @@
     <title>Sms4</title>
     <link rel="stylesheet" href="public/css/dstyle.css">
     <link rel="stylesheet" href="public/css/style4.css">
+    <link rel="stylesheet" href="public/css/submit.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.0.5/css/boxicons.min.css">
+    
 </head>
 <body>
 
@@ -25,13 +27,13 @@
         
         <div class="avatar-container text-center">
             <img src="public/assets/images/avatar.jfif" alt="Avatar" class="avatar">
-            <p class="username text-white">Juan Delacruz</p>
-            <p class="email text-white">juandelacruz@gmail.com</p>
+            <p class="username text-white">Admin</p>
+            <p class="email text-white">admin1@gmail.com</p>
         </div>
         
         <div class="container mt-5">
             <div class="dropdownSmsprofile">
-                <a class="dropdown-a" href="#" style="text-decoration: none;"><i class='bx bx-grid-alt'></i> Student's Dashboard</a>  
+                <a class="dropdown-a" href="#" style="text-decoration: none;"><i class='bx bx-grid-alt'></i> Dashboard</a>  
             </div>
         
             <div class="dropdownSmsprofile">
@@ -78,9 +80,55 @@
 <div class="main" id="mainContent">
     <button class="btn" id="toggleButton">&nbsp; ☰ &nbsp;</button>
     <hr>
-    <h2 class="text-left" style="font-size: 22px;">Student's Dashboard</h2><br>
+    <h2 class="text-left" style="font-size: 22px;">Admin's Dashboard</h2><br>
     
     <div class="main" id="mainContentOuter">
+
+    <div class="checkbox-container">
+  <label class="ios-checkbox blue">
+    <input type="checkbox" />
+    <div class="checkbox-wrapper">
+      <div class="checkbox-bg"></div>
+      <svg fill="none" viewBox="0 0 24 24" class="checkbox-icon">
+        <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.8" stroke="currentColor" d="M4 12L10 18L20 6" class="check-path"></path>
+      </svg>
+    </div>
+    <span class="checkbox-label">Submitted Report</span>
+  </label>
+
+  <label class="ios-checkbox green">
+    <input type="checkbox" />
+    <div class="checkbox-wrapper">
+      <div class="checkbox-bg"></div>
+      <svg fill="none" viewBox="0 0 24 24" class="checkbox-icon">
+        <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.8" stroke="currentColor" d="M4 12L10 18L20 6" class="check-path"></path>
+      </svg>
+    </div>
+    <span class="checkbox-label">In Progress</span>
+  </label>
+
+  <label class="ios-checkbox purple">
+    <input type="checkbox" />
+    <div class="checkbox-wrapper">
+      <div class="checkbox-bg"></div>
+      <svg fill="none" viewBox="0 0 24 24" class="checkbox-icon">
+        <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.8" stroke="currentColor" d="M4 12L10 18L20 6" class="check-path"></path>
+      </svg>
+    </div>
+    <span class="checkbox-label">Updating</span>
+  </label>
+
+  <label class="ios-checkbox red">
+    <input type="checkbox" />
+    <div class="checkbox-wrapper">
+      <div class="checkbox-bg"></div>
+      <svg fill="none" viewBox="0 0 24 24" class="checkbox-icon">
+        <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.8" stroke="currentColor" d="M4 12L10 18L20 6" class="check-path"></path>
+      </svg>
+    </div>
+    <span class="checkbox-label">Completed</span>
+  </label>
+</div>
         
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
