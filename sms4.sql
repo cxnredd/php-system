@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2025 at 02:30 PM
+-- Generation Time: Mar 07, 2025 at 01:22 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,7 +39,8 @@ CREATE TABLE `admin_user` (
 --
 
 INSERT INTO `admin_user` (`id`, `username`, `password`, `usertype`) VALUES
-(2, 'admin', 'admin', 'admin');
+(2, 'admin', 'admin', 'admin'),
+(3, 'chi', '123', 'admin');
 
 -- --------------------------------------------------------
 
@@ -61,6 +62,19 @@ CREATE TABLE `student_user` (
 INSERT INTO `student_user` (`id`, `username`, `password`, `usertype`) VALUES
 (5, 'user', 'user', 'user'),
 (6, 'admin', 'admin', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `submitted_reports`
+--
+
+CREATE TABLE `submitted_reports` (
+  `name` varchar(50) NOT NULL,
+  `violation` varchar(100) NOT NULL,
+  `date` date NOT NULL,
+  `type` enum('Academic Violation','Discipline Violation') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -86,7 +100,7 @@ ALTER TABLE `student_user`
 -- AUTO_INCREMENT for table `admin_user`
 --
 ALTER TABLE `admin_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `student_user`
