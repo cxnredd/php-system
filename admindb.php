@@ -14,11 +14,10 @@
     <title>Sms4</title>
     <link rel="stylesheet" href="public/css/dstyle.css">
     <link rel="stylesheet" href="public/css/style4.css">
-    <link rel="stylesheet" href="public/css/submit.css">
+    <link rel="stylesheet" href="public/css/styles.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.0.5/css/boxicons.min.css">
-    
 </head>
 <body>
 
@@ -33,7 +32,14 @@
         
         <div class="container mt-5">
             <div class="dropdownSmsprofile">
-                <a class="dropdown-a" href="#" style="text-decoration: none;"><i class='bx bx-grid-alt'></i> Dashboard</a>  
+                <button class="dropdown-btn" onclick="toggleDropdown(this)">
+                <i class='bx bx-grid-alt'></i> Prefect of Discipline <i class="fa fa-caret-down" style="float: right;"></i>
+                </button>
+                <div class="dropdown-container">
+                    <a class="dropdown-a" href="admindb.php" style="text-decoration: none;"><span>Dashboard</span></a>
+                    <a class="dropdown-a" href="admindb.php" style="text-decoration: none;"><span>Academic Violation Report</span></a>
+                    <a class="dropdown-a" href="admindb.php" style="text-decoration: none;"><span>Discipline Violation Report</span></a>
+                </div>
             </div>
         
             <div class="dropdownSmsprofile">
@@ -44,7 +50,6 @@
                     <a class="dropdown-a" href="#" style="text-decoration: none;"><span>Student Personal Information</span></a>
                     <a class="dropdown-a" href="#" style="text-decoration: none;"><span>Student Personal Information</span></a>
                     <a class="dropdown-a" href="#" style="text-decoration: none;"><span>Student Personal Information</span></a>
-
                 </div>
             </div>
     
@@ -66,9 +71,10 @@
                 <div class="dropdown-container">
                     <a class="dropdown-a" href="#" style="text-decoration: none;"><span>Courses</span></a>
                 </div>
+               
             </div>
     
-            
+           
     
             <div class="dropdownSmsprofile">
                 <a class="dropdown-a" href="logout.php" style="text-decoration: none;"><i class='bx bx-log-out'></i> <span>Log Out</span></a>  
@@ -80,56 +86,177 @@
 <div class="main" id="mainContent">
     <button class="btn" id="toggleButton">&nbsp; ☰ &nbsp;</button>
     <hr>
-    <h2 class="text-left" style="font-size: 22px;">Admin's Dashboard</h2><br>
+    <h2 class="text-left" style="font-size: 22px;">Dashboard</h2><br>
     
     <div class="main" id="mainContentOuter">
 
-    <div class="checkbox-container">
-  <label class="ios-checkbox blue">
-    <input type="checkbox" />
-    <div class="checkbox-wrapper">
-      <div class="checkbox-bg"></div>
-      <svg fill="none" viewBox="0 0 24 24" class="checkbox-icon">
-        <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.8" stroke="currentColor" d="M4 12L10 18L20 6" class="check-path"></path>
-      </svg>
-    </div>
-    <span class="checkbox-label">Submitted Report</span>
-  </label>
+<?php
 
-  <label class="ios-checkbox green">
-    <input type="checkbox" />
-    <div class="checkbox-wrapper">
-      <div class="checkbox-bg"></div>
-      <svg fill="none" viewBox="0 0 24 24" class="checkbox-icon">
-        <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.8" stroke="currentColor" d="M4 12L10 18L20 6" class="check-path"></path>
-      </svg>
-    </div>
-    <span class="checkbox-label">In Progress</span>
-  </label>
+    if(isset($_POST['submit'])){
+    $name = $_POST['name'];
+    $violation = $_POST['violation'];
+    $date = $_POST['date'];
+    $type = $_POST['type'];
 
-  <label class="ios-checkbox purple">
-    <input type="checkbox" />
-    <div class="checkbox-wrapper">
-      <div class="checkbox-bg"></div>
-      <svg fill="none" viewBox="0 0 24 24" class="checkbox-icon">
-        <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.8" stroke="currentColor" d="M4 12L10 18L20 6" class="check-path"></path>
-      </svg>
-    </div>
-    <span class="checkbox-label">Updating</span>
-  </label>
+    // Corrected SQL query
+    $sql = "INSERT INTO `submitted_reports` (name, violation, date, type) VALUES ('$name', '$violation', '$date', '$type')";
+    $result = mysqli_query($con, $sql);
+    
+    if($result){
+       // echo "Data inserted successfully";
+       header('location:admindb.php');
+    } else {
+        die(mysqli_error($con));
+    }
+}    
 
-  <label class="ios-checkbox red">
-    <input type="checkbox" />
-    <div class="checkbox-wrapper">
-      <div class="checkbox-bg"></div>
-      <svg fill="none" viewBox="0 0 24 24" class="checkbox-icon">
-        <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.8" stroke="currentColor" d="M4 12L10 18L20 6" class="check-path"></path>
-      </svg>
+?>
+
+    <main class="main-panel">
+        <div class="panel-header">
+            <h2>Submitted Reports</h2>
+            <input type="text" id="search" placeholder="🔍 Search reports..." onkeyup="searchReports()">
+            <button onclick="openReportForm()">➕ Add Report</button>
+        </div>
+
+        <div class="reports-list" id="reports-list"></div>
+    </main>
+
+    <div id="report-form" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeReportForm()">&times;</span>
+            <h2>Add/Edit Report</h2>
+            <input type="text" id="report-name" placeholder="Student Name">
+            <input type="text" id="report-violation" placeholder="Violation">
+            <input type="date" id="report-date">
+            <select id="report-type">
+                <option value="Academic Violation">Academic Violation</option>
+                <option value="Discipline Violation">Discipline Violation</option>
+            </select>
+            <button type="submit" class="btn btn-primary" name="submit">Save Report</button>
+        </div>
     </div>
-    <span class="checkbox-label">Completed</span>
-  </label>
-</div>
+
+    <script>
+        let reports = [];
         
+        function openReportForm(index = null) {
+            document.getElementById('report-form').style.display = 'block';
+            if (index !== null) {
+                const report = reports[index];
+                document.getElementById('report-name').value = report.name;
+                document.getElementById('report-violation').value = report.violation;
+                document.getElementById('report-date').value = report.date;
+                document.getElementById('report-type').value = report.type;
+                document.getElementById('report-form').setAttribute('data-index', index);
+            } else {
+                document.getElementById('report-form').removeAttribute('data-index');
+            }
+        }
+
+        function closeReportForm() {
+            document.getElementById('report-form').style.display = 'none';
+        }
+
+        function saveReport() {
+            const name = document.getElementById('report-name').value;
+            const violation = document.getElementById('report-violation').value;
+            const date = document.getElementById('report-date').value;
+            const type = document.getElementById('report-type').value;
+            const index = document.getElementById('report-form').getAttribute('data-index');
+
+            if (index !== null) {
+                reports[index] = { name, violation, date, type };
+            } else {
+                reports.push({ name, violation, date, type });
+            }
+            closeReportForm();
+            renderReports();
+        }
+
+        function deleteReport(index) {
+            reports.splice(index, 1);
+            renderReports();
+        }
+
+        function renderReports() {
+            const reportsList = document.getElementById('reports-list');
+            reportsList.innerHTML = '';
+            reports.forEach((report, index) => {
+                reportsList.innerHTML += `
+                    <div class="report" data-type="${report.type}">
+                        <span class="name">${report.name}</span>
+                        <span class="violation">${report.violation}</span>
+                        <span class="date">${report.date}</span>
+                        <button onclick="openReportForm(${index})">✏️ Edit</button>
+                        <button onclick="deleteReport(${index})">❌ Delete</button>
+                    </div>`;
+            });
+        }
+
+        function filterReports() {
+            const selectedType = document.getElementById('violation-type').value;
+            const reportsList = document.getElementById('reports-list');
+            reportsList.innerHTML = '';
+            reports.forEach((report, index) => {
+                if (selectedType === 'all' || report.type === selectedType) {
+                    reportsList.innerHTML += `
+                        <div class="report" data-type="${report.type}">
+                            <span class="name">${report.name}</span>
+                            <span class="violation">${report.violation}</span>
+                            <span class="date">${report.date}</span>
+                            <button onclick="openReportForm(${index})">✏️ Edit</button>
+                            <button onclick="deleteReport(${index})">❌ Delete</button>
+                        </div>`;
+                }
+            });
+        }
+
+        function searchReports() {
+            const query = document.getElementById('search').value.toLowerCase();
+            const reports = document.querySelectorAll('.report');
+            
+            reports.forEach(report => {
+                const name = report.querySelector('.name').textContent.toLowerCase();
+                const violation = report.querySelector('.violation').textContent.toLowerCase();
+                const date = report.querySelector('.date').textContent.toLowerCase();
+                
+                if (name.includes(query) || violation.includes(query) || date.includes(query)) {
+                    report.style.display = 'block';
+                } else {
+                    report.style.display = 'none';
+                }
+            });
+        }
+</script>
+        
+
+
+
+    <script>
+        function openReportDetails(element) {
+            const name = element.querySelector('.name').textContent;
+            const violation = element.querySelector('.violation').textContent;
+            const date = element.querySelector('.date').textContent;
+            const status = element.querySelector('.status').textContent;
+            const type = element.getAttribute('data-type');
+
+            window.location.href = `report_details.php?name=${encodeURIComponent(name)}&violation=${encodeURIComponent(violation)}&date=${encodeURIComponent(date)}&status=${encodeURIComponent(status)}&type=${encodeURIComponent(type)}`;
+        }
+
+        function filterReports() {
+            const selectedType = document.getElementById('violation-type').value;
+            const reports = document.querySelectorAll('.report');
+            
+            reports.forEach(report => {
+                if (selectedType === 'all' || report.getAttribute('data-type') === selectedType) {
+                    report.style.display = 'block';
+                } else {
+                    report.style.display = 'none';
+                }
+            });
+        }
+		</script>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
@@ -173,7 +300,6 @@ window.onclick = function(event){
     }
   }
 };
-
 
 </script>
 </body>

@@ -36,8 +36,8 @@
                 </button>
                 <div class="dropdown-container">
                     <a class="dropdown-a" href="studentdb.php" style="text-decoration: none;"><span>Dashboard</span></a>
-                    <a class="dropdown-a" href="academic.php" style="text-decoration: none;"><span>Violation Report</span></a>
-                    <a class="dropdown-a" href="discipline.php" style="text-decoration: none;"><span>Contact</span></a>
+                    <a class="dropdown-a" href="academic.php" style="text-decoration: none;"><span>Academic Violation Report</span></a>
+                    <a class="dropdown-a" href="discipline.php" style="text-decoration: none;"><span>Discipline Violation Report</span></a>
                 </div>
             </div>
         
@@ -87,7 +87,13 @@
     <h2 class="text-left" style="font-size: 22px;">Dashboard</h2><br>
     
     <div class="main" id="mainContentOuter">
-        
+
+<iframe
+	src="https://rraixd-preeefect.hf.space"
+	frameborder="0"
+	width="850"
+	height="450"
+></iframe>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>

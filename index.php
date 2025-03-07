@@ -1,6 +1,9 @@
 <?php 
    session_start();
+
+   include("php/config.php");
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,12 +25,13 @@
 
                 $result = mysqli_query($con,"SELECT * FROM student_user WHERE Username='$username' AND Password='$password' ") or die("Select Error");
                 $row = mysqli_fetch_assoc($result);
+               
 
                 if($row["usertype"]=="user")
             {
                     $_SESSION["username"]=$username;
 
-                    header("location:dashboard.php");
+                    header("location:studentdb.php");
             }
 
                 elseif($row["usertype"]=="admin")
